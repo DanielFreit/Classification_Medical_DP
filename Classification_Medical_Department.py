@@ -18,7 +18,7 @@ x_ray_dir = r'C:\Users\naoin\pythonProject\Pandasbootcamp\Portfolio\Classificati
 '''For this classification method I'll load some image data for patients with covid, normal health, viral pneumonia and
 bacterial pneumonia'''
 
-# PRINT 0
+# CHECK PRINT 0
 
 '''Let's make an image normalization, reshape, create a label so we can separate all the cases based on each
 condition the patient might have, after that I'll plot the data for better visualization'''
@@ -44,7 +44,7 @@ for i in np.arange(0, 36):
 plt.subplots_adjust(wspace=0.5)
 plt.show()
 
-# PRINT 1
+# CHECK PRINT 1
 
 '''Here we can start the convolutional layers followed by some dense layers, so we can apply filters, pooling,
 down sample and extract the features from the images so our model can detect this features and be able to use the fully
@@ -57,7 +57,7 @@ using transfer of learning'''
 base_model = ResNet50(weights='imagenet', include_top=False, input_tensor=Input(shape=(256, 256, 3)))
 base_model.summary()
 
-# PRINT 2
+# CHECK PRINT 2
 
 '''Now that we excluded the top (the dense part of this model), we can freeze the already trained weights
 and drop some of the info from the model. After that I'll be applying some pooling and flattening
@@ -92,7 +92,7 @@ train_generator = image_generator.flow_from_directory(batch_size=4, directory=x_
 
 history = model.fit(train_generator, epochs=25, callbacks=[checkpoint])
 
-# PRINT 3
+# CHECK PRINT 3
 
 #  todo VISUALIZATION ------------------------
 
@@ -106,7 +106,7 @@ plt.ylabel('Rate of Accuracy and error')
 plt.legend(['Rate of accuracy', 'Error'])
 plt.show()
 
-# PRINT 4
+# CHECK PRINT 4
 
 '''We can see the rate of accuracy and error margin so we can understand if the model need more or less training, also
 now we can import the images we want to test so we can check the answers on a non-trained dataset, because using
@@ -130,7 +130,7 @@ print(evaluate)
 '''We can see that we had way more accuracy, because we were testing with the training dataset we had more
 accuracy, now that we have different images to understand, the accuracy fell a bit'''
 
-# PRINT 5
+# CHECK PRINT 5
 
 '''Let's do the same we did before and normalize, resize, reshape, pass the images and create our prediction'''
 
@@ -155,7 +155,7 @@ for i in range(len(os.listdir(test_dir))):
 
 '''So our images will look like that, just like our training dataset'''
 
-# PRINT 6
+# CHECK PRINT 6
 
 '''Now I'll check the metrics with the test dataset, we're looking for accuracy score, a direct comparison
 confusion matrix and f1-score and recall (classification report)'''
@@ -164,7 +164,7 @@ confusion matrix and f1-score and recall (classification report)'''
 
 print(accuracy_score(original, prediction))
 
-# PRINT 7
+# CHECK PRINT 7
 
 '''Let's make a visual comparison between de predictions'''
 
@@ -177,7 +177,7 @@ for i in np.arange(0, 25):
 plt.subplots_adjust(wspace=1.2)
 plt.show()
 
-# PRINT 8
+# CHECK PRINT 8
 
 '''Usually for classification models confusion matrix and classification report can deliver more interesting results
 because we can check metrics with way more precision'''
@@ -186,13 +186,13 @@ cm = confusion_matrix(original, prediction)
 sns.heatmap(cm, annot=True)
 plt.show()
 
-# PRINT 9
+# CHECK PRINT 9
 
 '''Now we understand what the model got right and wrong, now the classification report'''
 
 print(classification_report(original, prediction))
 
-# PRINT 10
+# CHECK PRINT 10
 
 #  todo SINGULAR TEST ------------------------
 
@@ -211,7 +211,7 @@ print(predict)
 predict2 = np.argmax(predict)
 print(label_names[predict2], predict[0][predict2])
 
-# PRINT 11
+# CHECK PRINT 11
 
 '''As we can see our model is pretty good for Covid and Normal patients, so when I tested a Covid x-ray
 the model predicted Covid-19 with 1.0 accuracy, which means 100% of accuracy about the decision'''
