@@ -1,6 +1,8 @@
 # Classification_Medical_DP
 Images from patients with Covid-19, Pneumonia and healthy x-rays so we can classify the data correctly
 
+You can find the files via Google Drive: https://drive.google.com/file/d/1Ulef7TSli_KZrFoR3_5eXyJuIHJqqXxQ/view?usp=sharing
+
 For a better understanding with code + images I recommend the Google Collab visualization: https://colab.research.google.com/drive/1Ccx9b5gnvY6h3AOd88BEBuV36AwGHv66?usp=sharing
 
 Preview:
